@@ -9,6 +9,7 @@ import AddMealScreen from '../screens/AddMealScreen';
 import AddFoodScreen from '../screens/AddFoodScreen';
 import EstimateScreen from '../screens/EstimateScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import ScanScreen from '../screens/ScanScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -84,6 +85,11 @@ export default function AppNavigator() {
         <Stack.Screen
           name="Profile"
           component={ProfileScreen}
+          options={{ presentation: 'modal' }}
+        />
+        <Stack.Screen
+          name="Scan"
+          component={ScanScreen}
           options={{ presentation: 'modal' }}
         />
       </Stack.Navigator>

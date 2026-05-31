@@ -141,6 +141,15 @@ export default function HomeScreen() {
 
           <View style={{ height: 80 }} />
         </ScrollView>
+
+        {/* FAB Scanner — comme WiseMeal */}
+        <TouchableOpacity
+          style={styles.fab}
+          onPress={() => navigation.navigate('Scan', { date: selectedDate })}
+          activeOpacity={0.85}
+        >
+          <Text style={styles.fabIcon}>📷</Text>
+        </TouchableOpacity>
       </SafeAreaView>
     </LinearGradient>
   );
@@ -330,5 +339,24 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '700',
     color: '#FF6B35',
+  },
+  fab: {
+    position: 'absolute',
+    bottom: 16,
+    alignSelf: 'center',
+    width: 62,
+    height: 62,
+    borderRadius: 31,
+    backgroundColor: '#2196F3',
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#2196F3',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.4,
+    shadowRadius: 12,
+    elevation: 10,
+  },
+  fabIcon: {
+    fontSize: 26,
   },
 });

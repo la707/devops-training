@@ -61,9 +61,17 @@ export default function AddMealScreen() {
               <Text style={styles.back}>‹ Retour</Text>
             </TouchableOpacity>
             <Text style={styles.title}>Ajouter • {MEAL_TYPE_LABELS[mealType]}</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('AddFood')}>
-              <Text style={styles.newFood}>+ Nouveau</Text>
-            </TouchableOpacity>
+            <View style={styles.headerActions}>
+              <TouchableOpacity
+                style={styles.scanBtn}
+                onPress={() => navigation.navigate('Scan', { date, mealType })}
+              >
+                <Text style={styles.scanBtnText}>📷</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('AddFood')}>
+                <Text style={styles.newFood}>+ Créer</Text>
+              </TouchableOpacity>
+            </View>
           </View>
 
           {/* Search */}
@@ -169,6 +177,16 @@ const styles = StyleSheet.create({
   },
   back: { fontSize: 16, color: '#2196F3', fontWeight: '600' },
   title: { fontSize: 15, fontWeight: '700', color: '#1A2B4B' },
+  headerActions: { flexDirection: 'row', alignItems: 'center', gap: 10 },
+  scanBtn: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+    backgroundColor: '#E8F4FD',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  scanBtnText: { fontSize: 18 },
   newFood: { fontSize: 14, color: '#2196F3', fontWeight: '600' },
   searchRow: {
     flexDirection: 'row',
