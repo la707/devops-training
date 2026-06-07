@@ -1,8 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import {
-  View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet, SafeAreaView,
+  View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet,
   KeyboardAvoidingView, Platform, Modal,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useNutrition } from '../context/NutritionContext';

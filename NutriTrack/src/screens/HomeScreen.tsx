@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
 import {
-  View, Text, ScrollView, StyleSheet, TouchableOpacity, StatusBar, SafeAreaView,
+  View, Text, ScrollView, StyleSheet, TouchableOpacity, StatusBar,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { format, parseISO } from 'date-fns';

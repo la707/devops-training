@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useReducer, useCallback } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { storageGet, storageSet } from '../utils/storage';
 import { MealEntry, DayLog, UserProfile, FoodItem, Nutrients, NutritionGoal } from '../types';
 import { addNutrients, EMPTY_NUTRIENTS, scaleNutrients, calculateDailyCalories, calculateMacroTargets } from '../utils/nutritionCalculator';
 import { formatDate } from '../utils/dateUtils';
@@ -109,9 +109,9 @@ export const NutritionProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 
   useEffect(() => {
     Promise.all([
-      AsyncStorage.getItem('@nutrition_logs'),
-      AsyncStorage.getItem('@nutrition_profile'),
-      AsyncStorage.getItem('@custom_foods'),
+      storageGet('nutrition_logs'),
+      storageGet('nutrition_profile'),
+      storageGet('custom_foods'),
     ]).then(([logsRaw, profileRaw, foodsRaw]) => {
       const partial: Partial<State> = {};
       try { if (logsRaw) partial.logs = JSON.parse(logsRaw); } catch {}
@@ -122,15 +122,15 @@ export const NutritionProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   }, []);
 
   useEffect(() => {
-    AsyncStorage.setItem('@nutrition_logs', JSON.stringify(state.logs));
+    storageSet('nutrition_logs', JSON.stringify(state.logs));
   }, [state.logs]);
 
   useEffect(() => {
-    AsyncStorage.setItem('@nutrition_profile', JSON.stringify(state.profile));
+    storageSet('nutrition_profile', JSON.stringify(state.profile));
   }, [state.profile]);
 
   useEffect(() => {
-    AsyncStorage.setItem('@custom_foods', JSON.stringify(state.customFoods));
+    storageSet('custom_foods', JSON.stringify(state.customFoods));
   }, [state.customFoods]);
 
   const allFoods = [...FOOD_DATABASE, ...state.customFoods];
